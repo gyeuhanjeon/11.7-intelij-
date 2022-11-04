@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './project/pages/Main';
 import Login from './project/Login/Login';
-import Home from './project/HOME/Home';
+// import Home from './project/HOME/Home';
 import MyPage from './project/pages/MyPage';
 import MemberInfo from './project/pages/MemberInfo';
 import MemberDrop from './project/pages/MemberDrop';
@@ -9,7 +9,16 @@ import SignUp from './project/SingUp/SignUp';
 import QuizApp from './project/pages/QuizApp';
 import Pg1 from './project/pages/FreeTest/pg1';
 import Navbar2 from './project/Navbar/Navbar2';
-
+import Home from './project/HOME/Home copy';
+import MessageList from './project/HOME/MessageList';
+// import FileUpload from './ImageTest/ImageTest'; // 이거는 되는 거임
+// import FileUpload from './ImageTest/ImageTest2';
+// import ImageUpload from './ImageTest/ImageTest4';
+// import ImageUpload from './ImageTest/ImageTest5';
+// import ImageUpload from './ImageTest/ImageUpload';
+// import FileUpload from './ImageTest/FileUpload';
+// import ImageTest9 from './ImageTest/ImageTest9';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -25,6 +34,10 @@ function App() {
         <Route path='/MemberDrop' element={<MemberDrop />} />
         <Route path='/QuizApp' element={<QuizApp />} />
         <Route path='/pg' element={<Pg1 />} />
+        {/* 아래부터는 조혜경이 추가 */}
+        <Route path='/MessageList' element={<MessageList />} />
+        {/* 아래부터는 테스트 중 */}
+
       </Routes>
     </Router>
   );

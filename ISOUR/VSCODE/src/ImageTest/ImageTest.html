@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="file" id="fileUpload" />
+    <img id="preview" />
+    <script>
+      const isSrc = window.localStorage.setItem("isSrc", isSrc);
+      // const fileInput = document.getElementById("fileUpload");
+      // const preview = document.getElementById("preview");
+
+      // fileInput.onchange = function (e) {
+      //   const selectedFile = fileInput.files[0];
+      //   if(selectedFile) {
+      //     preview.src = URL.createObjectURL(selectedFile);
+      //   }
+      // };
+      const fileInput = document.getElementById("fileUpload");
+      console.log("\n\nfileInput : " + fileInput);
+
+      const preview = document.getElementById("preview");
+      console.log("\n\npreview : " + preview);
+
+      fileInput.onchange = function (e) {
+        console.log("\n\nfileInput.files : " + fileInput.files);
+
+        const selectedFile = fileInput.files[0];
+        console.log("\n\nselectedFile : " + selectedFile);
+
+        if(selectedFile) {
+          console.log("\n\nURL.createObjectURL(selectedFile) : \n\n" + URL.createObjectURL(selectedFile));
+          preview.src = URL.createObjectURL(selectedFile);
+          isSrc = preview.src;
+        }
+      };
+    </script>
+</body>
+</html>

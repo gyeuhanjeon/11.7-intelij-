@@ -2,7 +2,7 @@ import axios from "axios";
 
 // 주석 달건데
 const HEADER = 'application/json';
-const TEAM_DOMAIN = "http://localhost:8090/ISOUR/";
+const TEAM_DOMAIN = "http://localhost:8111/";
 
 
 
@@ -26,6 +26,15 @@ const TeamAPI = {
     return await axios.post(TEAM_DOMAIN + "MemberServlet", regCmd, HEADER);
   },
 
+  // 쪽지함 불러오기
+  messageStorage: async function(id) {
+    const regCmd = {
+      cmd : "ShowMessage",
+      id : id
+    }
+    return await axios.post(TEAM_DOMAIN + "PostboxServlet", regCmd, HEADER);
+  },
+
   // 회원 가입
   memberReg: async function(name, id, pwd, birth, age, gender, region1, region2) {
     const memberObj = {
@@ -46,10 +55,21 @@ const TeamAPI = {
   mbtiReg: async function(mbti, id) {
     const resultObj = {
       mbti: mbti,
-      id: id
+      id: id 
     };
 
     return await axios.post(TEAM_DOMAIN + "TestServlet", resultObj, HEADER);
+  },
+
+  // 쪽지보내기
+  messageReg: async function(id, receiverId, content) {
+    const messageObj = {
+      id: id,
+      receiverId: receiverId,
+      content: content
+    };
+
+    return await axios.post(TEAM_DOMAIN + "MessageServlet", messageObj, HEADER);
   },
 
   // 회원 탈퇴

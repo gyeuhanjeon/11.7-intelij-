@@ -10,9 +10,6 @@ const Home = () => {
   const localPw = window.localStorage.getItem("userPw");
 
   const [memberInfo, setMemberInfo] = useState(""); // 현재 로그인 되어 있는 회원의 정보 저장용
-  window.localStorage.setItem("userName", memberInfo.name);
-  // const localName = window.localStorage.getItem("userName");
-
 
   useEffect(() => {
         
@@ -29,9 +26,9 @@ const Home = () => {
     memberData();
     }, []);
 
-  const onClickMember = () => {
-    console.log("회원 목록 조회 눌렀어요.");
-    window.location.replace("/MemberInfo");
+  const onClickSendMessage = () => {
+    console.log("쪽지 보내기 버튼 눌렀어요.");
+    window.location.replace("/MessageList");
   }
   
   const onClickDrop = () => {
@@ -50,10 +47,10 @@ const Home = () => {
     <div>
       <div className="container">
         <div className="mainhead">
-          {/* <div onClick={onClickMember}>
+          <div onClick={onClickSendMessage}>
             <img src={nowGo} alt="화살표"/>
-            <span>회원 목록 조회</span>
-          </div> */}
+            <span>쪽지 보내기</span>
+          </div>
           <div onClick={onClickDrop}>
             <img src={nowGo} alt="화살표" />
             <span>탈퇴하기</span>
