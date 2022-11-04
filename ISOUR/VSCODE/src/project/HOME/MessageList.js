@@ -129,6 +129,17 @@ const MessageList = () => {
 
   }
 
+  const onClickDelete = (name, content) => {
+    console.log("name : " + name);
+    setName(name);
+
+    console.log("content : " + content);
+    setContent(content);
+
+    setSignUpModalOn(true);
+
+  }
+
   if(loading) {
     return <MemberListBlock>대기 중...</MemberListBlock>
   }
@@ -141,15 +152,18 @@ const MessageList = () => {
         
         <MemberListBlock>
           <MemberList>
-            <MemberTitle>보낸 쪽지함</MemberTitle>
-            <button onClick={onClickSendMessage} value={receiverId}>{receiverId}</button>
+            <MemberTitle>받은 쪽지함</MemberTitle>
+            {/* <button onClick={onClickSendMessage} value={receiverId}>{receiverId}</button> */}
+            <button onClick={onClickDelete}>삭제하기</button>
             <tr>
+              <th><input type="checkbox" /></th>
               <th>보낸 사람(NAME)</th>
               <th>내용(CONTENT)</th>
               <th>시간(DATETIME)</th>
             </tr>
             {messageList && messageList.map(message => (
               <tr key={message.datetime}>
+                <td><input type="checkbox" /></td>
                 <td>{message.name}</td>
                 <td onClick={()=>onClickMessage(message.name, message.content)}>{message.content}</td>
                 <td>{message.datetime}</td>

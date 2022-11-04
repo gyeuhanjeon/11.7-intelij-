@@ -24,6 +24,11 @@ const Msg = styled.div`
 
 
 function SignUp() {
+  // ▼ 로그인되어 있으면 회원가입 불가
+  const isLogin = window.localStorage.getItem("isLogin");
+  if(isLogin === "TRUE") window.location.replace("/home");
+  // ▲ 로그인되어 있으면 회원가입 불가
+
   // 이름, 아이디, 비밀번호, 비밀번호 확인, 생년월일, 성별, 주소, 회원가입
   // 조혜경 : 입력 받을 값 상태
   const [name, setName] = useState('');

@@ -1,15 +1,18 @@
 // import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import TeamAPI from '../../api/TeamAPI';
+import TeamAPI from '../api/TeamAPI';
 import { useState } from "react";
-import "./pg1.css";
+import "./Exam.css";
 
 // QuizApp 의 Line 44 에서 props를 넘겨받음.
 // props 1 ▶ mode={()=>changeMode('score')} 
 // props 2 ▶ quizList={states.quizList}
 const Quiz = (props) => {
-  
+  const isLogin = window.localStorage.getItem("isLogin");
+  if(isLogin === "FALSE") window.location.replace("/");
+
   const localId = window.localStorage.getItem("userId");
+
   const [count, setCount] = useState(0);
   const [testMBTI, setTestMBTI] = useState("");
 
@@ -99,7 +102,15 @@ const Quiz = (props) => {
   );
 }
 
-const Pg1 = () => {
+const Exam = () => {
+  const isLogin = window.localStorage.getItem("isLogin");
+  if(isLogin === "FALSE") window.location.replace("/login");
+
+  const currentId = window.localStorage.getItem("userId");
+  const currentPw = window.localStorage.getItem("userPw");
+
+  console.log("\n\n현재 localStorage 에 저장된 ID : " + currentId);
+  console.log("\n\n현재 localStorage 에 저장된 PASSWORD : " + currentPw);
 
   const [states, setStates] = useState({
     mode: 'start',
@@ -197,4 +208,4 @@ const OX = styled.div`
     }
 `;
 
-export default Pg1;
+export default Exam;

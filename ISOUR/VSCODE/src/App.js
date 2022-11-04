@@ -1,15 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './project/pages/Main';
 import Login from './project/Login/Login';
-// import Home from './project/HOME/Home';
 import MyPage from './project/pages/MyPage';
 import MemberInfo from './project/pages/MemberInfo';
 import MemberDrop from './project/pages/MemberDrop';
 import SignUp from './project/SingUp/SignUp';
-import QuizApp from './project/pages/QuizApp';
-import Pg1 from './project/pages/FreeTest/pg1';
+import Exam from './project/pages/Exam';
 import Navbar2 from './project/Navbar/Navbar2';
-import Home from './project/HOME/Home copy';
+import Home from './project/HOME/Home';
 import MessageList from './project/HOME/MessageList';
 // import FileUpload from './ImageTest/ImageTest'; // 이거는 되는 거임
 // import FileUpload from './ImageTest/ImageTest2';
@@ -32,8 +30,7 @@ function App() {
         <Route path='/mypage' element={<MyPage />} />
         <Route path='/MemberInfo' element={<MemberInfo />} />
         <Route path='/MemberDrop' element={<MemberDrop />} />
-        <Route path='/QuizApp' element={<QuizApp />} />
-        <Route path='/pg' element={<Pg1 />} />
+        <Route path='/Exam' element={<Exam />} />
         {/* 아래부터는 조혜경이 추가 */}
         <Route path='/MessageList' element={<MessageList />} />
         {/* 아래부터는 테스트 중 */}

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../CSS/nav.css";
@@ -8,11 +8,34 @@ import logo from '../images/logo.png';
 // npm install react-icons --save  설치!!
 
 function Navbar2() {
+    
+    
+
     const uavRef = useRef();
 
     const showNavBar = () => {
         uavRef.current.classList.toggle("responsive_nav");
     }
+
+    const onClickLogout = () => {
+
+        const currentId = window.localStorage.getItem("userId");
+        const currentPw = window.localStorage.getItem("userPw");
+    
+        console.log("\n\n현재 localStorage 에 저장된 ID : " + currentId);
+        console.log("\n\n현재 localStorage 에 저장된 PASSWORD : " + currentPw);
+
+        const logoutID = window.localStorage.setItem("userId", "");
+        const logoutPW =window.localStorage.setItem("userPw", "");
+        window.localStorage.setItem("isLogin", "FALSE");
+        
+        console.log("로그아웃 ID : " + logoutID)
+        console.log("로그아웃 PW : " + logoutPW)
+        alert("콘솔 확인용");
+        window.location.replace("/");
+        
+    
+      }
 
     return(
         <header>
@@ -24,9 +47,10 @@ function Navbar2() {
             </div>
             <nav ref={uavRef}>
                 <a href="/">HOME</a>
-                <a href="/QuizApp">TEST</a>
+                <a href="/pg">TEST</a>
                 <a href="/#">BOARD</a>
                 <a href="/mypage">My Page</a>
+                <button onClick={onClickLogout}>로그아웃</button>
                 {/* 닫기 버튼 */}
                 <button className="nav-btn nav-colse-btn" onClick={showNavBar}>
                    <FaTimes /> 

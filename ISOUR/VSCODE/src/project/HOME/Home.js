@@ -3,8 +3,10 @@ import TeamAPI from '../api/TeamAPI'
 import nowGo from '../images/short_cut.png'
 
 const Home = () => {
+  // ▼ 로그인 안 되어 있으면 로그인 페이지로
   const isLogin = window.localStorage.getItem("isLogin");
-  if(isLogin === "FALSE") window.location.replace("/");
+  if(isLogin === "FALSE") window.location.replace("/login");
+  // ▲ 로그인 안 되어 있으면 로그인 페이지로
 
   const localId = window.localStorage.getItem("userId");
   const localPw = window.localStorage.getItem("userPw");
@@ -17,7 +19,10 @@ const Home = () => {
   useEffect(() => {
         
     const memberData = async () => {
-      console.log("localId : "+ localId);
+      console.log("\n\n현재 localStorage 에 저장된 ID : " + localId);
+      console.log("\n\n현재 localStorage 에 저장된 PASSWORD : " + localPw);
+      console.log("\n\n현재 localStorage 에 저장된 isLogin : " + isLogin);
+
       try {
         const response = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
         setMemberInfo(response.data);
@@ -29,9 +34,9 @@ const Home = () => {
     memberData();
     }, []);
 
-  const onClickMember = () => {
-    console.log("회원 목록 조회 눌렀어요.");
-    window.location.replace("/MemberInfo");
+  const onClickSendMessage = () => {
+    console.log("쪽지 보내기 버튼 눌렀어요.");
+    window.location.replace("/MessageList");
   }
   
   const onClickDrop = () => {
@@ -41,7 +46,7 @@ const Home = () => {
   }
 
   const onClickTestStart = () => {
-    console.log("검사하기 버튼 눌렀어요.");
+    console.log("\n\n검사하기 버튼 눌렀어요.");
     alert("콘솔 확인하세요.")
     window.location.replace("/pg");
   }
@@ -50,10 +55,10 @@ const Home = () => {
     <div>
       <div className="container">
         <div className="mainhead">
-          {/* <div onClick={onClickMember}>
+          <div onClick={onClickSendMessage}>
             <img src={nowGo} alt="화살표"/>
-            <span>회원 목록 조회</span>
-          </div> */}
+            <span>쪽지 보내기</span>
+          </div>
           <div onClick={onClickDrop}>
             <img src={nowGo} alt="화살표" />
             <span>탈퇴하기</span>

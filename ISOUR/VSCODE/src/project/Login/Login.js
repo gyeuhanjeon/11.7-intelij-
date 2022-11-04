@@ -4,7 +4,10 @@ import '../CSS/Style_Login.css';
 import logo from '../images/logo.png';
 
 function Login() {
-  window.localStorage.setItem("isLogin", "FALSE");
+  // ▼ 로그인되어 있으면 바로 HOME 으로 이동
+  const isLogin = window.localStorage.getItem("isLogin");
+  if(isLogin === "TRUE") window.location.replace("/home");
+  // ▲ 로그인되어 있으면 바로 HOME 으로 이동
 
   // 키보드 입력
   const [inputId, setInputId] = useState("");
