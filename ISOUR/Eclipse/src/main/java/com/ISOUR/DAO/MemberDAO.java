@@ -144,6 +144,7 @@ public class MemberDAO {
 		return list;
 	}
 	
+	
 	// 회원가입여부 확인!!
 	public boolean regIdCheck(String id) {
 
