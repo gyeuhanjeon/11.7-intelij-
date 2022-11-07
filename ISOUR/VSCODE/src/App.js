@@ -9,6 +9,7 @@ import Exam from './project/pages/Exam';
 import Navbar2 from './project/Navbar/Navbar2';
 import Home from './project/HOME/Home';
 import MessageList from './project/HOME/MessageList';
+import MessageDetail from './project/HOME/MessageDetail';
 // import FileUpload from './ImageTest/ImageTest'; // 이거는 되는 거임
 // import FileUpload from './ImageTest/ImageTest2';
 // import ImageUpload from './ImageTest/ImageTest4';
@@ -33,6 +34,7 @@ function App() {
         <Route path='/Exam' element={<Exam />} />
         {/* 아래부터는 조혜경이 추가 */}
         <Route path='/MessageList' element={<MessageList />} />
+        <Route path='/MessageDetail' element={<MessageDetail />} />
         {/* 아래부터는 테스트 중 */}
 
       </Routes>

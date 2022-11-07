@@ -6,7 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MessageVO {
-    private String name;
+    private String id;
+    private String title;
     private String content;
     private String datetime;
 }

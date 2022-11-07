@@ -54,7 +54,8 @@ public class PostboxServlet extends HttpServlet {
 
         for(MessageVO e : list) {
             JSONObject messageList = new JSONObject();
-            messageList.put("name", e.getName());
+            messageList.put("id", e.getId());
+            messageList.put("title", e.getTitle());
             messageList.put("content", e.getContent());
             messageList.put("datetime", e.getDatetime());
 

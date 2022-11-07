@@ -6,20 +6,23 @@ import { Link } from "react-router-dom";
 import imgHome from '../images/home_button.png'
 import '../CSS/Style_Login.css';
 import SignUpModal from '../modals/SignUpModal';
+import MessageDetail from './MessageDetail';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MessageList = () => {
   const localId = window.localStorage.getItem("userId");
 
-  
+
   const [messageList, setMessageList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
+  const [id, setID] = useState("");
+  const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   let inputMessage;
   // 테스트중
-  
+
   // const namesList = window.localStorage.getItem("userId");
   // const [namesList , setNamesList ] = useState([]);
 
@@ -78,11 +81,11 @@ const MessageList = () => {
         // for(let i=0; i <testArray.length; i++) {
         //   console.log("testArray[" + i + "] : " + testArray[i]);
         // }
-        
+
         // console.log(response.data[0].name);
         // console.log("typeof(response.data) : " + typeof(response.data));
 
-        
+
       } catch (e) {
         console.log(e);
       }
@@ -100,11 +103,11 @@ const MessageList = () => {
 
   // 여기까지 모달 테스트
 
-  const onClickSendMessage = async() => {
+  const onClickSendMessage = async () => {
     console.log("쪽지 보내기 눌렀어요.");
     inputMessage = prompt("쪽지 내용을 작성하세요.", "");
-    
-    if(inputMessage !== "") {
+
+    if (inputMessage !== "") {
       const messageReg = await TeamAPI.messageReg(localId, receiverId, inputMessage);
       console.log("localId : " + localId);
       console.log("receiverId : " + receiverId);
@@ -118,14 +121,18 @@ const MessageList = () => {
 
   }
 
-  const onClickMessage = (name, content) => {
-    console.log("name : " + name);
-    setName(name);
+  const onClickMessage = (id, title, content) => {
+    console.log("id : " + id);
+    setID(id);
+
+    console.log("content : " + title);
+    setTitle(title);
 
     console.log("content : " + content);
     setContent(content);
 
-    setSignUpModalOn(true);
+    window.location.replace("/MessageDetail");
+
 
   }
 
@@ -140,16 +147,19 @@ const MessageList = () => {
 
   }
 
-  if(loading) {
+  if (loading) {
     return <MemberListBlock>대기 중...</MemberListBlock>
   }
 
-  return(
+  return (
     <>
-      <SignUpModal modalName={name} modalContent={content} show={signUpModalOn} onHide={()=>setSignUpModalOn(false)}/>
+
+      <MessageDetail id={id} title={title} content={content} />
+
+      {/* <SignUpModal modalName={id} modalContent={content} show={signUpModalOn} onHide={() => setSignUpModalOn(false)} /> */}
       <div className='Container'>
         {/* 모달 테스트 중 */}
-        
+
         <MemberListBlock>
           <MemberList>
             <MemberTitle>받은 쪽지함</MemberTitle>
@@ -157,22 +167,22 @@ const MessageList = () => {
             <button onClick={onClickDelete}>삭제하기</button>
             <tr>
               <th><input type="checkbox" /></th>
-              <th>보낸 사람(NAME)</th>
-              <th>내용(CONTENT)</th>
+              <th>보낸 사람(ID)</th>
+              <th>제목(TITLE)</th>
               <th>시간(DATETIME)</th>
             </tr>
             {messageList && messageList.map(message => (
               <tr key={message.datetime}>
                 <td><input type="checkbox" /></td>
-                <td>{message.name}</td>
-                <td onClick={()=>onClickMessage(message.name, message.content)}>{message.content}</td>
+                <td>{message.id}</td>
+                <td onClick={() => onClickMessage(message.id, message.title, message.content)}>{message.title}</td>
                 <td>{message.datetime}</td>
               </tr>
             ))}
           </MemberList>
           <Link to="/home" className="link-box">
             <img className="link-img" src={imgHome} alt="HOME" />
-          <p>HOME으로 이동</p>
+            <p>HOME으로 이동</p>
           </Link>
         </MemberListBlock>
       </div>

@@ -24,14 +24,20 @@ public class MessageDAO {
 
             while(rs.next()) {
                 // getString() 안에 테이블의 컬럼명과 동일하게 입력해야 함
-                String name = rs.getString("NAME");
+                String id = rs.getString("ID");
+                String title = rs.getString("TITLE");
                 String content = rs.getString("CONTENT");
                 String datetime = rs.getString("DATETIME");
 
+                System.out.println(title);
+
                 MessageVO vo = new MessageVO();  // 각 정보를 저장할 수 있는 객체 생성.
-                vo.setName(name);
+                vo.setId(id);
+                vo.setTitle(title);
                 vo.setContent(content);
                 vo.setDatetime(datetime);
+
+                System.out.println(title);
 
                 list.add(vo);  // 받은 정보를 list로 저장.
             }
@@ -46,15 +52,16 @@ public class MessageDAO {
     }
 
     // 쪽지 보내기
-    public boolean mbtiRegister(String id, String receiverId, String content) {
+    public boolean mbtiRegister(String id, String receiverId, String title, String content) {
         int result = 0;
         // 테이블 컬럼명이랑 똑같이
-        String insertSQL = "INSERT INTO " + receiverId + " (NAME, CONTENT) VALUES(?, ?)";
+        String insertSQL = "INSERT INTO " + receiverId + " (ID, TITLE, CONTENT) VALUES(?, ?, ?)";
 
         try {
             conn = Common.getConnection();
             pstmt = conn.prepareStatement(insertSQL);
             pstmt.setString(1, id);
+            pstmt.setString(1, title);
             pstmt.setString(2, content);
 
             result = pstmt.executeUpdate();

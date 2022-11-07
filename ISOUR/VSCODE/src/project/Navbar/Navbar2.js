@@ -47,7 +47,7 @@ function Navbar2() {
             </div>
             <nav ref={uavRef}>
                 <a href="/">HOME</a>
-                <a href="/pg">TEST</a>
+                <a href="/exam">TEST</a>
                 <a href="/#">BOARD</a>
                 <a href="/mypage">My Page</a>
                 <button onClick={onClickLogout}>로그아웃</button>

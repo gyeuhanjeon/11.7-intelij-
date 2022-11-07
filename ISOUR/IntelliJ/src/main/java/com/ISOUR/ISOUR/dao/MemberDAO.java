@@ -176,7 +176,7 @@ public class MemberDAO {
         int insertResult = 0;
         // 테이블 컬럼명이랑 똑같이
         String insertSQL = "INSERT INTO I_MEMBER (NAME, ID, PASSWORD, BIRTH, AGE, GENDER, REGION1, REGION2) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-        String createSQL = "CREATE TABLE " + id + "( NAME VARCHAR2(30), CONTENT VARCHAR2(30), DATETIME VARCHAR2(50) DEFAULT TO_CHAR(SYSDATE, 'yyyy-mm-dd hh24:mi:ss') )";
+        String createSQL = "CREATE TABLE " + id + "( ID VARCHAR2(30),TITLE VARCHAR2(100), CONTENT VARCHAR2(1000), DATETIME VARCHAR2(50) DEFAULT TO_CHAR(SYSDATE, 'yyyy-mm-dd hh24:mi:ss') )";
         try {
             conn = Common.getConnection();
             pstmt = conn.prepareStatement(insertSQL);

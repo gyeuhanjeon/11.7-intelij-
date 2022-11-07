@@ -27,6 +27,9 @@ public class LoginServlet extends HttpServlet {
         String getId = (String)jsonObj.get("id");
         String getPwd = (String)jsonObj.get("pwd");
 
+        System.out.println(getId);
+        System.out.println(getPwd);
+
         MemberDAO dao = new MemberDAO();
         boolean isRegister = dao.loginCheck(getId, getPwd);
 

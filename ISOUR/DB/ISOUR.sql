@@ -1,10 +1,15 @@
 DROP TABLE I_MEMBER;
-DROP TABLE admin;
+
+DROP TABLE kongdole1;
+DROP TABLE kongdole2;
+DROP TABLE gyeurok;
 
 
 SELECT * FROM I_MEMBER;
 SELECT * FROM admin;
-SELECT * FROM dleldi;
+SELECT * FROM kongdole1;
+
+SELECT * FROM kongdole;
 COMMIT;
 
 CREATE TABLE I_MEMBER (
@@ -36,4 +41,8 @@ UPDATE I_MEMBER SET MBTI = 'ESTJ' WHERE ID = 'admin';
 
 --(SYSDATE, 'yyyy-mm-dd hh24:mi:ss')
 
-INSERT INTO admin (NAME, CONTENT) VALUES ('조혜경', '쪽지를 보내보자.');
+INSERT INTO kongdole1 (ID, TITLE, CONTENT) VALUES ('kongdole2','ㅅㅅㅅㅅ실험ㅅㅅㅅㅅㅅㅅㅅㅅㅅ', '글 내용이다 쪽지를 보내보자.');
+DELETE FROM kongdole1 WHERE ID = 'admin' AND DATETIME ='2022-11-05 13:40:47';
+SELECT * FROM kongdole1;
+SELECT * FROM kongdole2;
+SELECT * FROM I_MEMBER;

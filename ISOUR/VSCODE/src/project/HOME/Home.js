@@ -48,7 +48,7 @@ const Home = () => {
   const onClickTestStart = () => {
     console.log("\n\n검사하기 버튼 눌렀어요.");
     alert("콘솔 확인하세요.")
-    window.location.replace("/pg");
+    window.location.replace("/Exam");
   }
 
   return(

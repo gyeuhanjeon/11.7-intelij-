@@ -30,10 +30,11 @@ public class MessageServlet {
         // TeamAPI.js 에 작성해둔 messageReg : "messageObj" 를 가져온다.
         String getId = (String)jsonObj.get("id");
         String getReceiverId = (String)jsonObj.get("receiverId");
+        String getTitle = (String)jsonObj.get("title");
         String getContent = (String)jsonObj.get("content");
 
         MessageDAO dao = new MessageDAO();
-        boolean rstComplete = dao.mbtiRegister(getId, getReceiverId, getContent);
+        boolean rstComplete = dao.mbtiRegister(getId, getReceiverId, getTitle, getContent);
 
         PrintWriter out = response.getWriter();
         JSONObject resJson = new JSONObject();

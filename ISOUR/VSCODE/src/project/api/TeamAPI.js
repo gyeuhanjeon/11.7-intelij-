@@ -35,6 +35,19 @@ const TeamAPI = {
     return await axios.post(TEAM_DOMAIN + "PostboxServlet", regCmd, HEADER);
   },
 
+  
+    // 쪽지보내기
+    messageReg: async function(id, receiverId, title, content) {
+      const messageObj = {
+        id: id,
+        receiverId: receiverId,
+        title : title,
+        content: content
+      };
+  
+      return await axios.post(TEAM_DOMAIN + "MessageServlet", messageObj, HEADER);
+    },
+
   // 회원 가입
   memberReg: async function(name, id, pwd, birth, age, gender, region1, region2) {
     const memberObj = {
@@ -59,17 +72,6 @@ const TeamAPI = {
     };
 
     return await axios.post(TEAM_DOMAIN + "TestServlet", resultObj, HEADER);
-  },
-
-  // 쪽지보내기
-  messageReg: async function(id, receiverId, content) {
-    const messageObj = {
-      id: id,
-      receiverId: receiverId,
-      content: content
-    };
-
-    return await axios.post(TEAM_DOMAIN + "MessageServlet", messageObj, HEADER);
   },
 
   // 회원 탈퇴
